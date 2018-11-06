@@ -1,0 +1,13 @@
+#!/bin/sh
+
+rsync -rav --delete \
+	--exclude '.*' \
+	--exclude node_modules \
+	. 'europa:~/fpti-js-badges/'
+
+ssh europa "\
+cd ~/fpti-js-badges
+npm i
+npm update
+forever-service delete fpti-js-badges
+forever-service install fpti-js-badges --start -s index.js"
