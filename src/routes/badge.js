@@ -1,8 +1,8 @@
 'use strict'
 
-const { BadgeFactory } = require('gh-badges')
-const githubInfo = require('hosted-git-info')
-const getVersion = require('../lib')
+import { BadgeFactory } from 'gh-badges'
+import githubInfo from 'hosted-git-info'
+import getVersion from './lib.js'
 
 const badges = new BadgeFactory({ fontPath: './Verdana.ttf' })
 
@@ -15,10 +15,10 @@ const error = (msg, code) => {
 const badge = (text, color) => badges.create({
 	text: ['fpti-js', text],
 	colorB: color,
-	template: 'flat'
+	template: 'flat',
 })
 
-const route = async (req, res, next) => {
+export default async (req, res, next) => {
 	const path = req.path.slice('/badge/'.length) // todo
 	const repo = githubInfo.fromUrl(path)
 	const fpti = await (getVersion(repo).catch(e => {
@@ -33,5 +33,3 @@ const route = async (req, res, next) => {
 	res.setHeader('Content-Type', 'image/svg+xml')
 	res.end(b)
 }
-
-module.exports = route

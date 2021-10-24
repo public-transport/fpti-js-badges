@@ -1,16 +1,12 @@
+# general
 .DS_Store
-Thumbs.db
+*.log
 
-.nvm-version
+# node-specific
 node_modules
-npm-debug.log
-dist
-
+package-lock.json
 yarn.lock
 shrinkwrap.yaml
-package-lock.json
-
-config/*
-!config/default.json
+dist
 
 Verdana.ttf

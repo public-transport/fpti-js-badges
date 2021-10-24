@@ -1,9 +1,11 @@
 'use strict'
 
-const { fetch } = require('fetch-ponyfill')()
-const pkginfo = require('package-json')
+import createFetch from 'fetch-ponyfill'
+import pkginfo from 'package-json'
 
-const getVersion = async (repo) => {
+const fetch = createFetch()
+
+export default async (repo) => {
 	// todo
 	if (!repo || !repo.file) throw new Error('invalid github repository')
 
@@ -25,5 +27,3 @@ const getVersion = async (repo) => {
 
 	return fpti
 }
-
-module.exports = getVersion

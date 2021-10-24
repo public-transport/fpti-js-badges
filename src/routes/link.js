@@ -1,7 +1,7 @@
 'use strict'
 
-const githubInfo = require('hosted-git-info')
-const getVersion = require('../lib')
+import githubInfo from 'hosted-git-info'
+import getVersion from './lib.js'
 
 const error = (msg, code) => {
 	const e = new Error(msg)
@@ -9,7 +9,7 @@ const error = (msg, code) => {
 	return e
 }
 
-const route = async (req, res, next) => {
+export default async (req, res, next) => {
 	const path = req.path.slice('/link/'.length) // todo
 	const repo = githubInfo.fromUrl(path)
 	const fpti = await (getVersion(repo).catch(e => {
@@ -20,5 +20,3 @@ const route = async (req, res, next) => {
 
 	res.redirect(`https://github.com/public-transport/fpti-js/tree/${fpti}`)
 }
-
-module.exports = route

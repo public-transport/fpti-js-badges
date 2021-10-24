@@ -2,6 +2,7 @@
 	"name": "fpti-js-badges",
 	"version": "0.0.0",
 	"description": "FPTI-JS badges",
+	"private": true,
 	"keywords": [
 		"badge",
 		"fpti-js",
@@ -14,32 +15,32 @@
 	"repository": "juliuste/fpti-js-badges",
 	"license": "ISC",
 	"author": "Julius Tens <mail@juliustens.eu>",
-	"main": "./index.js",
+	"type": "module",
 	"scripts": {
-		"fix": "eslint n--fix index.js lib.js routes",
-		"lint": "eslint index.js lib.js routes",
-		"test": "npm run lint"
+		"fix": "npm run lint -- --fix",
+		"lint": "eslint src",
+		"test": "npm run lint && npm run check-deps",
+		"check-deps": "depcheck",
+		"start": "node src/index.js"
 	},
 	"dependencies": {
-		"compression": "^1.7.3",
-		"config": "^2.0.1",
+		"compression": "^1.7.4",
 		"corser": "^2.0.1",
-		"express": "^4.16.4",
+		"express": "^4.17.1",
 		"fetch-ponyfill": "^6.0.2",
 		"gh-badges": "^2.0.0-beta1",
 		"hosted-git-info": "^2.7.1",
 		"package-json": "^5.0.0"
 	},
 	"devDependencies": {
-		"depcheck": "^0.6.11",
-		"eslint": "^5.8.0",
-		"eslint-config-standard": "^12.0.0",
-		"eslint-plugin-import": "^2.14.0",
-		"eslint-plugin-node": "^8.0.0",
-		"eslint-plugin-promise": "^4.0.1",
-		"eslint-plugin-standard": "^4.0.0"
+		"depcheck": "^1.4.2",
+		"eslint": "^7.32.0",
+		"eslint-config-standard": "^16.0.3",
+		"eslint-plugin-import": "^2.25.2",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-promise": "^5.1.1"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=14"
 	}
 }

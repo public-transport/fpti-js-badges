@@ -1,13 +1,15 @@
 'use strict'
 
-const config = require('config')
-const express = require('express')
-const http = require('http')
-const corser = require('corser')
-const compression = require('compression')
+import express from 'express'
+import http from 'http'
+import corser from 'corser'
+import compression from 'compression'
 
-const badge = require('./routes/badge')
-const link = require('./routes/link')
+import badge from './routes/badge.js'
+import link from './routes/link.js'
+
+const port = process.env.PORT
+if (!port) throw new Error('please provide a PORT environment variable')
 
 const api = express()
 const server = http.createServer(api)
@@ -25,7 +27,7 @@ api.use((err, req, res, next) => {
 	next()
 })
 
-server.listen(config.port, (e) => {
+server.listen(port, (e) => {
 	if (e) return console.error(e)
-	console.log(`Listening on ${config.port}.`)
+	console.log(`Listening on ${port}.`)
 })
