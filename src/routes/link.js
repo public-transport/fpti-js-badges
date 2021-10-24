@@ -1,5 +1,3 @@
-'use strict'
-
 import githubInfo from 'hosted-git-info'
 import getVersion from './lib.js'
 

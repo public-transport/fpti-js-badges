@@ -1,5 +1,3 @@
-'use strict'
-
 import express from 'express'
 import http from 'http'
 import corser from 'corser'

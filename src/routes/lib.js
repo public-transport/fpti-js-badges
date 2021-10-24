@@ -1,9 +1,5 @@
-'use strict'
-
-import createFetch from 'fetch-ponyfill'
+import fetch from 'node-fetch'
 import pkginfo from 'package-json'
-
-const fetch = createFetch()
 
 export default async (repo) => {
 	// todo
